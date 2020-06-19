@@ -1,5 +1,4 @@
 import React from "react";
-// import { GlobalContext } from "../context/GlobalState.js";
 
 export const Train = ({ train }) => {
   console.log(train);

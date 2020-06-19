@@ -26,8 +26,6 @@ export const GlobalProvider = ({ children }) => {
     try {
       const result = await fetch(`${url}/${info}  `, data);
       const response = await result.json();
-      console.log("response=", response);
-      console.log("result=", result);
       dispatch({
         type: "GET_TRAIN",
         payload: response.data,

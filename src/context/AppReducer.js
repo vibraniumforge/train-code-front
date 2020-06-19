@@ -1,5 +1,4 @@
 export default (state, action) => {
-  console.log("AppReducer fires. action=", action);
   switch (action.type) {
     case "GET_TRAIN":
       return {
