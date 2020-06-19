@@ -1,44 +1,64 @@
-import React from "react";
-import "./App.css";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState.js";
 
-import Form from "./components/Form.js";
-import { TrainList } from "./components/TrainList.js";
-import { GlobalProvider } from "./context/GlobalState.js";
+const Form = () => {
+  const [input, setInput] = useState("MNPPD");
+  const [isSearched, setIsSearched] = useState(false);
 
-function App() {
+  const { getTrain } = useContext(GlobalContext);
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+
+    getTrain(input.toUpperCase());
+    setIsSearched(true);
+    setInput("");
+  };
+
   return (
-    <GlobalProvider>
-      <div className="app">
-        <Form />
-        <TrainList />
+    <div className="form">
+      <h1>Train Code Finder</h1>
+      <div>
+        <form onSubmit={(e) => handleOnSubmit(e)}>
+          <input
+            type="text"
+            placeholder="Enter code here"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <input type="submit" value="Submit" disabled={input.length < 4} />
+        </form>
       </div>
-    </GlobalProvider>
+    </div>
   );
-}
+};
 
-export default App;
+export default Form;
 
 // onChange = (e) => {
-//   this.setState({
-//     [e.target.name]: e.target.value.toUpperCase(),
-//     isSearched: this.state.input.length > 4 ? true : false,
-//   });
-// };
+//     this.setState({
+//       [e.target.name]: e.target.value.toUpperCase(),
+//       isSearched: this.state.input.length > 4 ? true : false,
+//     });
+//   };
 
-// onSubmit = (e) => {
-//   e.preventDefault();
-//   this.setState({ data: "" });
-//   if (this.state.input && this.state.input.length >= 4) {
-//     fetch(`${url}/${this.state.input}`)
-//       .then((res) => res.json())
-//       .then((res) => {
-//         console.log(res);
-//         return res;
-//       })
-//       .then((res) => this.setState({ data: res, input: "", isSearched: true }))
-//       .catch((err) => console.log(err));
-//   }
-// };
+//   onSubmit = (e) => {
+//     e.preventDefault();
+//     this.setState({ data: "" });
+//     if (this.state.input && this.state.input.length >= 4) {
+//       fetch(`${url}/${this.state.input}`)
+//         .then((res) => res.json())
+//         .then((res) => {
+//           console.log(res);
+//           return res;
+//         })
+//         .then((res) =>
+//           this.setState({ data: res, input: "", isSearched: true })
+//         )
+//         .catch((err) => console.log(err));
+//     }
+//   };
 
 //   render() {
 //     const notice =
