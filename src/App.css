@@ -1,7 +1,95 @@
 .app {
   text-align: center;
+  margin: 20px;
 }
 
 table {
   text-align: center;
+  margin: 0 auto;
+}
+
+td,
+th {
+  padding: 15px;
+}
+
+input {
+  font-size: 20px;
+  /* margin-right: 10px; */
+}
+
+.error {
+  color: red;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.submit-btn {
+  margin: 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  color: black;
+  background-color: lightgreen;
+}
+
+.disabled {
+  margin: 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  color: white;
+  background-color: gray;
+}
+
+.bnsf {
+  color: green;
+  background-color: orange;
+  font-weight: bold;
+}
+
+.up {
+  color: red;
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.csx {
+  color: yellow;
+  background-color: blue;
+  font-weight: bold;
+}
+
+.ns {
+  color: white;
+  background-color: black;
+  font-weight: bold;
+}
+
+.kcs {
+  color: yellow;
+  background-color: red;
+  font-weight: bold;
+}
+
+.cp {
+  color: white;
+  background-color: red;
+  font-weight: bold;
+}
+
+.cn {
+  color: black;
+  background-color: red;
+  font-weight: bold;
 }

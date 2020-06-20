@@ -7,6 +7,7 @@ const initialState = {
   trains: [],
   error: "",
   loading: false,
+  searched: false,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -15,21 +16,17 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   async function getTrain(info) {
-    const data = {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        mode: "no-cors",
-      },
-    };
     try {
-      const result = await fetch(`${url}/${info}  `, data);
+      const result = await fetch(`${url}/${info}  `);
       const response = await result.json();
-      dispatch({
-        type: "GET_TRAIN",
-        payload: response.data,
-      });
+      if (response.success) {
+        dispatch({
+          type: "GET_TRAIN",
+          payload: response.data,
+        });
+      } else {
+        dispatch({ type: "GET_TRAIN_ERROR", payload: response.message });
+      }
     } catch (err) {
       console.log("GET_TRAIN_ERROR", err);
       dispatch({ type: "GET_TRAIN_ERROR", payload: err.response });

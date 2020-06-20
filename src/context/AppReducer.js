@@ -5,12 +5,16 @@ export default (state, action) => {
         ...state,
         trains: action.payload,
         loading: false,
+        searched: true,
+        error: "",
       };
     case "GET_TRAIN_ERROR":
       return {
         ...state,
-        error: action.payload,
+        trains: [],
         loading: false,
+        searched: true,
+        error: action.payload,
       };
     default:
       return state;
